@@ -1,0 +1,52 @@
+body {
+    font: 14px "Lato", sans-serif;
+}
+
+a {
+    color: #000000;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #dc3c67;
+}
+
+a.navbar-brand img {
+    width: 150px;
+}
+
+
+/* header {
+    box-shadow: 1px 1px 4px -2px #4b4b4b;
+} */
+
+.pv_main {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.feed_wrapper {
+    max-width: 540px;
+    margin: auto;
+}
+
+.feed {
+    overflow: hidden;
+    border: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.pv_loader img {
+    width: 60px;
+    margin: auto;
+    display: block;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+@media screen and (max-width:768px) {
+    .feed img {
+        width: 100%;
+        border-radius: 0 !important;
+    }
+}
