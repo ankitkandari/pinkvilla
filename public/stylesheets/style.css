@@ -44,6 +44,12 @@ a.navbar-brand img {
     margin-bottom: 40px;
 }
 
+.pv_img {
+    width: 100%;
+    object-fit: cover;
+    aspect-ratio: 0.75/0.6;
+}
+
 @media screen and (max-width:768px) {
     .feed img {
         width: 100%;

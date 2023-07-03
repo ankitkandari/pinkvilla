@@ -21,27 +21,25 @@ function loadMore() {
     url: `${apiUrl}${page}`,
     success: function (res) {
       console.log(res);
-      if (res?.nodes?.length > 0) {
-        let feeds = res?.nodes;
+      if (res?.data?.length > 0) {
+        let feeds = res?.data;
         let wrapper = $(".feed_wrapper");
-        feeds.forEach(function ({ node }) {
+        feeds.forEach(function (node) {
           wrapper.append(`
             <div class="feed card mb-3">
               <div class="row g-0">
                 <div class="col-md-4">
                   <img
-                    src="${apiDomain}${node.ImageStyle_thumbnail}"
-                    class="img-fluid rounded-start"
-                    alt="${node.title}"
+                    src="${node?.image?.url}"
+                    class="img-fluid rounded-start pv_img"
+                    alt="${node?.image?.caption}"
                   />
                 </div>
                 <div class="col-md-8">
                   <div class="card-body">
-                    <h5 class="card-title">${node.title}</h5>
+                    <a href="${node?.url}"><h5 class="card-title">${node?.title}</h5></a>
                     <p class="card-text">
-                      <small class="text-muted">${timeDiff(
-                        parseInt(node.last_update)
-                      )}</small>
+                      <small class="text-muted">${timeDiff(node?.date)}</small>
                     </p>
                   </div>
                 </div>
@@ -54,13 +52,13 @@ function loadMore() {
   });
 }
 
-function timeDiff(unixTime) {
+function timeDiff(dateTime) {
   var ms_Min = 60 * 1000;
   var ms_Hour = ms_Min * 60;
   var ms_Day = ms_Hour * 24;
   var ms_Mon = ms_Day * 30;
   var ms_Yr = ms_Day * 365;
-  var diff = new Date() - new Date(unixTime * 1000);
+  var diff = new Date() - new Date(dateTime);
 
   if (diff < ms_Min) {
     return Math.round(diff / 1000) + " seconds ago";
