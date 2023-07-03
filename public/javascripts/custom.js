@@ -3,7 +3,7 @@ $(window).scroll(function () {
     Math.round($(window).scrollTop()) ==
     $(document).height() - $(window).height()
   ) {
-      loadMore();
+    loadMore();
   }
 });
 
@@ -26,24 +26,20 @@ function loadMore() {
         let wrapper = $(".feed_wrapper");
         feeds.forEach(function (node) {
           wrapper.append(`
-            <div class="feed card mb-3">
-              <div class="row g-0">
-                <div class="col-md-4">
-                  <img
-                    src="${node?.image?.url}"
-                    class="img-fluid rounded-start pv_img"
-                    alt="${node?.image?.caption}"
-                  />
+            <div class="col">
+                <div class="feed card">
+                    <img src="${node?.image?.url}" class="img-fluid pv_img" alt="${node?.image?.caption}" />
+                    <div class="card-body">
+                        <a href="${node?.url}">
+                            <h5 class="card-title">
+                            ${node?.title}
+                            </h5>
+                        </a>
+                        <p class="card-text">
+                            <small class="text-muted">${timeDiff(node?.date)}</small>
+                        </p>
+                    </div>
                 </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <a href="${node?.url}"><h5 class="card-title">${node?.title}</h5></a>
-                    <p class="card-text">
-                      <small class="text-muted">${timeDiff(node?.date)}</small>
-                    </p>
-                  </div>
-                </div>
-              </div>
             </div>
             `);
         });
